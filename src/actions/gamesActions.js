@@ -12,6 +12,7 @@ export const loadGames = () => async (dispatch) => {
   const popularData = await axios.get(popularGamesURL());
   const upcomingData = await axios.get(upcomingGamesURL());
   const newGamesdata = await axios.get(newGamesURL());
+
   dispatch({
     type: "FETCH_GAMES",
     payload: {
@@ -24,6 +25,7 @@ export const loadGames = () => async (dispatch) => {
 
 export const fetchSearch = (game_name) => async (dispatch) => {
   const searchGames = await axios.get(searchGameURL(game_name));
+
   dispatch({
     type: "FETCH_SEARCHED",
     payload: {

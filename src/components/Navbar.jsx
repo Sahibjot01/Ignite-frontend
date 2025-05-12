@@ -9,7 +9,7 @@ import logo from "../img/logo.svg";
 //import animation
 import { fadeIn } from "../Animation";
 
-const Nav = () => {
+const Navbar = () => {
   const dispatch = useDispatch();
   const [textInput, setTextInput] = useState("");
   const inputHandler = (e) => {
@@ -36,7 +36,7 @@ const Nav = () => {
     </StyledNav>
   );
 };
-export default Nav;
+export default Navbar;
 
 const StyledNav = styled(motion.Nav)`
   padding: 3rem 5rem;

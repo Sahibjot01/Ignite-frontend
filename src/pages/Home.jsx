@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadGames } from "../actions/gamesActions";
 import styled from "styled-components";
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { motion } from "framer-motion";
 import GameCard from "../components/GameCard";
 import GameDetail from "../components/GameDetail";
 
@@ -17,6 +17,7 @@ const Home = () => {
 
   const location = useLocation();
   const gameID = location.pathname.split("/")[2];
+
   useEffect(() => {
     dispatch(loadGames());
   }, [dispatch]);

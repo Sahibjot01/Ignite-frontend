@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback, useEffect } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 //importing redux
@@ -24,10 +24,22 @@ const GameDetail = () => {
   const exitDetailHandler = (e) => {
     let element = e.target;
     if (element.classList.contains("shadow")) {
-      document.body.style.overflow = "auto";
-      navigate("/");
+      closeDetail();
     }
   };
+  const closeDetail = useCallback(() => {
+    document.body.style.overflow = "auto";
+    navigate("/");
+  }, [navigate]);
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === "Escape") {
+        closeDetail();
+      }
+    };
+    document.addEventListener("keydown", handleKeyPress);
+    return () => document.removeEventListener("keydown", handleKeyPress);
+  }, [closeDetail]);
 
   const getPlatform = (platform) => {
     switch (platform) {
