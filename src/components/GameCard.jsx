@@ -21,7 +21,7 @@ const GameCard = ({ game }) => {
     <StyledGameCard layoutId={game.id} onClick={loadDetailHandler}>
       <Link to={`/game/${game.id}`}>
         <motion.h3 layoutId={`title-${game.id}`}>{game.name}</motion.h3>
-        <p>{game.released}</p>
+        <p>Release date : {game.released}</p>
         <p>Rating : {game.rating ? game.rating : "not available"}</p>
         {game.background_image ? (
           <motion.img
@@ -51,8 +51,20 @@ const StyledGameCard = styled(motion.div)`
     height: 40vh;
     object-fit: cover;
   }
+  h3 {
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
 
   @media (max-width: 768px) {
+    h3 {
+      font-size: 1.2rem;
+      padding: 0.5rem;
+    }
+    p {
+      font-size: 1rem;
+    }
     max-width: 25rem; /* Reduce max-width for smaller screens */
     img {
       height: 30vh; /* Adjust image height for smaller screens */
