@@ -40,14 +40,23 @@ const GameCard = ({ game }) => {
 const StyledGameCard = styled(motion.div)`
   ${sharedCardStyles}
   width: 100%;
+  max-width: 31.25rem;
   min-height: 30vh;
   text-align: center;
   cursor: pointer;
+  margin: 0 auto; /* Center the card horizontally if needed */
 
   img {
     width: 100%;
     height: 40vh;
     object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 25rem; /* Reduce max-width for smaller screens */
+    img {
+      height: 30vh; /* Adjust image height for smaller screens */
+    }
   }
 `;
 

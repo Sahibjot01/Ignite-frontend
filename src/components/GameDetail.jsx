@@ -88,8 +88,10 @@ const GameDetail = () => {
                   <motion.h3 layoutId={`title-${game.id}`}>
                     {game.name}
                   </motion.h3>
-                  <p>rating : </p>
-                  {getStars()}
+                  <div className="starContainer">
+                    <p>rating : </p>
+                    {getStars()}
+                  </div>
                 </div>
                 <StyledInfoDiv>
                   <h3>Platforms</h3>
@@ -99,6 +101,7 @@ const GameDetail = () => {
                         key={data.platform.id}
                         src={getPlatform(data.platform.name)}
                         alt="data.platform.name"
+                        title={data.platform.name}
                       />
                     ))}
                   </StyledPlatformsDiv>
@@ -165,7 +168,32 @@ const StyledDetailedCard = styled(motion.div)`
   color: black;
   z-index: 10;
   img {
+    border-radius: 1rem;
     width: 100%;
+  }
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  @media (max-width: 768px) {
+    width: 80%;
+    left: 10%;
+    margin-top: 5rem;
+    padding: 2rem 2rem;
+    img {
+      height: 50vh;
+      object-fit: cover;
+    }
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      img {
+        height: 20vh;
+        object-fit: cover;
+      }
+    }
   }
 `;
 const StyledStatsDiv = styled(motion.div)`
@@ -182,6 +210,20 @@ const StyledStatsDiv = styled(motion.div)`
     height: 2rem;
     display: inline;
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    .starContainer {
+      margin-top: 1rem;
+      gap: 0.5rem;
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
 `;
 
 const StyledInfoDiv = styled(motion.div)`
@@ -190,9 +232,15 @@ const StyledInfoDiv = styled(motion.div)`
 
 const StyledPlatformsDiv = styled(motion.div)`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   img {
     margin-left: 3rem;
+  }
+  @media (max-width: 768px) {
+    img {
+      margin-left: 1rem;
+    }
   }
 `;
 const StyledMediaDiv = styled(motion.div)`
@@ -200,10 +248,23 @@ const StyledMediaDiv = styled(motion.div)`
   img {
     width: 100%;
   }
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+    img {
+      height: 30vh;
+      object-fit: cover;
+    }
+  }
 `;
 
 const StyledDescriptionDiv = styled(motion.div)`
   margin: 5rem 0rem;
+  @media (max-width: 768px) {
+    p {
+      font-size: 1rem;
+    }
+    margin: 3rem 0rem;
+  }
 `;
 
 const FallbackImage = styled.div`
